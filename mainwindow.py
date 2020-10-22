@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):
         particula = Particula(id, origen_X, origen_Y, destino_X, destino_Y, velocidad, red, green, blue)
         self.listapar.agregar_inicio(particula)
 
-       # print(id, origen_X, origen_Y, destino_X, destino_Y, velocidad, red, green, blue)
+        #print(id, origen_X, origen_Y, destino_X, destino_Y, velocidad, red, green, blue)
        # self.ui.salida.insertPlainText(id + str(origen_X) + str(origen_Y) + str(destino_X) + str(destino_Y) + velocidad + str(red) + str(green) + str(blue))
 
     @Slot()
