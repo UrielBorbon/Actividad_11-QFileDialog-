@@ -1,4 +1,5 @@
 from particula import Particula
+import json
 
 class ListaPar:
     def __init__(self):
@@ -18,6 +19,27 @@ class ListaPar:
         return "".join(
             str(particula) + '\n' for particula in self.__particles
         ) 
+
+    def guardar(self, ubicacion):
+        try:
+            with open(ubicacion, 'w') as archivo: #se va a crear en modo escritura "write"
+                listaparti = [particula.to_json() for particula in self.__particles]
+                print (listaparti)
+                json.dump(listaparti, archivo, indent=5)
+            return 1
+        except:
+            return 0
+
+    def abrir(self, ubicacion):
+        try:
+            with open(ubicacion, 'r') as archivo:
+                listaparti = json.load(archivo)
+                self.__particles = [Particula(**particula) for particula in listaparti]     
+            return 1
+        except:
+            return 0    
+
+
 
 #part = Particle()
 #pa1 = Particula(1,1,1,1,1,1,1,1,1,0)
