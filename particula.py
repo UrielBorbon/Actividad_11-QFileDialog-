@@ -27,3 +27,17 @@ class Particula:
             'Blue: ' + str(self.__blue) + '\n' +
             'Distancia: ' + str(self.__distancia) + '\n' 
         )
+
+
+    def to_json(self):
+        return {
+            "Id": self.__Id,
+            "origen_X": self.__origen_X,
+            "origen_Y": self.__origen_Y,
+            "destino_X": self.__destino_X,
+            "destino_Y": self.__destino_Y,
+            "velocidad": self.__velocidad,
+            "red": self.__red,
+            "green": self.__green,
+            "blue": self.__blue,
+        }
