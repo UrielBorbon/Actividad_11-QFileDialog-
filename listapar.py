@@ -39,6 +39,22 @@ class ListaPar:
         except:
             return 0    
 
+    def __len__(self):
+        return len(self.__particles)
+
+    
+    def __iter__(self):
+        self.cont = 0
+
+        return self
+    
+    def __next__(self):
+        if self.cont < len(self.__particles):
+            particula = self.__particles[self.cont]
+            self.cont += 1
+            return particula
+        else:
+            raise StopIteration
 
 
 #part = Particle()
