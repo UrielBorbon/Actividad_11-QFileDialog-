@@ -28,6 +28,46 @@ class Particula:
             'Distancia: ' + str(self.__distancia) + '\n' 
         )
 
+    @property
+    def Id(self):
+        return self.__Id
+
+    @property
+    def origen_X(self):
+        return self.__origen_X
+
+    @property
+    def origen_Y(self):
+        return self.__origen_Y
+
+    @property
+    def destino_X(self):
+        return self.__destino_X
+
+    @property
+    def destino_Y(self):
+        return self.__destino_Y
+
+    @property
+    def velocidad(self):
+        return self.__velocidad
+    
+    @property
+    def red(self):
+        return self.__red
+    
+    @property
+    def green(self):
+        return self.__green
+    
+    @property
+    def blue(self):
+        return self.__blue
+
+    @property
+    def distancia(self):
+        return self.__distancia
+
 
     def to_json(self):
         return {
