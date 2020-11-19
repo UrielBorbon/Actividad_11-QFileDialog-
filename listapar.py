@@ -3,27 +3,27 @@ import json
 
 class ListaPar:
     def __init__(self):
-        self.__particles = []
+        self.particles = [] #antes era un arreglo privado pero lo tuve que cambiar a metodo publico para que pudiera acceder a la lista de mis particulas
 
     def agregar_final(self, particula:Particula):
-        self.__particles.append(particula)
+        self.particles.append(particula)
 
     def agregar_inicio(self, particula:Particula):
-        self.__particles.insert(0, particula)
+        self.particles.insert(0, particula)
 
     def mostrar(self):
-        for particula in self.__particles:
+        for particula in self.particles:
             print(particula)
 
     def __str__(self):
         return "".join(
-            str(particula) + '\n' for particula in self.__particles
+            str(particula) + '\n' for particula in self.particles
         ) 
 
     def guardar(self, ubicacion):
         try:
             with open(ubicacion, 'w') as archivo: #se va a crear en modo escritura "write"
-                listaparti = [particula.to_json() for particula in self.__particles]
+                listaparti = [particula.to_json() for particula in self.particles]
                 print (listaparti)
                 json.dump(listaparti, archivo, indent=5)
             return 1
@@ -34,13 +34,13 @@ class ListaPar:
         try:
             with open(ubicacion, 'r') as archivo:
                 listaparti = json.load(archivo)
-                self.__particles = [Particula(**particula) for particula in listaparti]     
+                self.particles = [Particula(**particula) for particula in listaparti]     
             return 1
         except:
             return 0    
 
     def __len__(self):
-        return len(self.__particles)
+        return len(self.particles)
 
     
     def __iter__(self):
@@ -49,8 +49,8 @@ class ListaPar:
         return self
     
     def __next__(self):
-        if self.cont < len(self.__particles):
-            particula = self.__particles[self.cont]
+        if self.cont < len(self.particles):
+            particula = self.particles[self.cont]
             self.cont += 1
             return particula
         else:
