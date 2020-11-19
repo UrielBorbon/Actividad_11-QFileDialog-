@@ -5,11 +5,19 @@ from ui_mainwindow import Ui_MainWindow
 from listapar import ListaPar
 from particula import Particula
 
+def methodsort_by_id(Particula):
+    return Particula.Id
+
+
 class MainWindow(QMainWindow):
+
+    particula = Particula()
+    
+
     def __init__(self):
         super (MainWindow, self).__init__()
 
-        self.listapar = ListaPar()
+        self.listapar = ListaPar()     
 
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
@@ -29,6 +37,28 @@ class MainWindow(QMainWindow):
 
         self.scene = QGraphicsScene()
         self.ui.graphicsView.setScene(self.scene)
+
+        self.ui.ordenari_pushButton.clicked.connect(self.click_ordenari)
+        self.ui.ordenarv_pushButton.clicked.connect(self.click_ordenarv)
+        self.ui.ordenard_pushButton.clicked.connect(self.click_ordenard)
+
+
+    @Slot()
+    def click_ordenari(self):
+        self.listapar.particles.sort(key= methodsort_by_id)
+
+
+    @Slot()
+    def click_ordenarv(self):
+        self.listapar.particles.sort(key=lambda Particula: Particula.velocidad, reverse=True)
+
+
+
+    @Slot()
+    def click_ordenard(self):
+        self.listapar.particles.sort(key=lambda Particula: Particula.distancia)
+
+
 
     def wheelEvent(self, event):
         if event.delta() > 0:
