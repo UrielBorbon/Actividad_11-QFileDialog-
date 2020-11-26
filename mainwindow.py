@@ -4,6 +4,7 @@ from PySide2.QtCore import Slot
 from ui_mainwindow import Ui_MainWindow
 from listapar import ListaPar
 from particula import Particula
+import pprint
 
 def methodsort_by_id(Particula):
     return Particula.Id
@@ -41,6 +42,36 @@ class MainWindow(QMainWindow):
         self.ui.ordenari_pushButton.clicked.connect(self.click_ordenari)
         self.ui.ordenarv_pushButton.clicked.connect(self.click_ordenarv)
         self.ui.ordenard_pushButton.clicked.connect(self.click_ordenard)
+
+        self.ui.mostrarg_pushButton.clicked.connect(self.click_mostrarg)
+
+    @Slot()
+    def click_mostrarg(self):
+        self.ui.salida.clear()
+        grafo = dict()
+        for con in self.listapar.particles:
+            origenes = (con.origen_X, con.origen_Y)
+            destinos = (con.destino_X, con.destino_Y)
+            distancia = (con.distancia)
+            arista_origenes = (origenes, distancia)
+            arista_destinos = (destinos, distancia)
+
+            if origenes in grafo:
+                grafo[origenes].append(arista_destinos)
+            else:
+                grafo[origenes] = [arista_destinos]
+
+            if destinos in grafo:
+                grafo[destinos].append(arista_origenes)
+            else:
+                grafo[destinos] = [arista_origenes]
+
+            printdic = pprint.pformat(grafo, width = 35)
+            printdic = printdic + '\n'
+
+            self.ui.salida.insertPlainText(printdic)
+
+
 
 
     @Slot()
