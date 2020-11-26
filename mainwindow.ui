@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>805</width>
-    <height>586</height>
+    <height>670</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -31,27 +31,24 @@
            <string>Actividad 8</string>
           </property>
           <layout class="QGridLayout" name="gridLayout">
-           <item row="5" column="0">
-            <widget class="QLabel" name="label_7">
+           <item row="1" column="0">
+            <widget class="QLabel" name="label_2">
              <property name="text">
-              <string>Velocidad:</string>
+              <string>Origen en X:</string>
              </property>
             </widget>
            </item>
-           <item row="0" column="1" colspan="2">
-            <widget class="QLineEdit" name="id_lineEdit"/>
-           </item>
-           <item row="3" column="0">
-            <widget class="QLabel" name="label_4">
-             <property name="text">
-              <string>Destino X:</string>
+           <item row="9" column="2">
+            <widget class="QSpinBox" name="blue_spinBox">
+             <property name="maximum">
+              <number>255</number>
              </property>
             </widget>
            </item>
-           <item row="14" column="0" colspan="3">
-            <widget class="QPushButton" name="ordenari_pushButton">
+           <item row="7" column="0" colspan="2">
+            <widget class="QLabel" name="label_9">
              <property name="text">
-              <string>OrdenarID</string>
+              <string>Red:</string>
              </property>
             </widget>
            </item>
@@ -62,10 +59,17 @@
              </property>
             </widget>
            </item>
-           <item row="15" column="0" colspan="3">
-            <widget class="QPushButton" name="ordenarv_pushButton">
+           <item row="7" column="2">
+            <widget class="QSpinBox" name="red_spinBox">
+             <property name="maximum">
+              <number>255</number>
+             </property>
+            </widget>
+           </item>
+           <item row="12" column="0" colspan="3">
+            <widget class="QPushButton" name="agregarfinal_pushButton">
              <property name="text">
-              <string>OrdenarVel</string>
+              <string>Agregar-Final</string>
              </property>
             </widget>
            </item>
@@ -76,10 +80,66 @@
              </property>
             </widget>
            </item>
+           <item row="5" column="0">
+            <widget class="QLabel" name="label_7">
+             <property name="text">
+              <string>Velocidad:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="11" column="0" colspan="3">
+            <widget class="QPushButton" name="agregarinicio_pushButton">
+             <property name="text">
+              <string>Agregar-Inicio</string>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="2">
+            <widget class="QSpinBox" name="destinox_spinBox">
+             <property name="maximum">
+              <number>500</number>
+             </property>
+            </widget>
+           </item>
+           <item row="3" column="0">
+            <widget class="QLabel" name="label_4">
+             <property name="text">
+              <string>Destino X:</string>
+             </property>
+            </widget>
+           </item>
            <item row="9" column="0" colspan="2">
             <widget class="QLabel" name="label_11">
              <property name="text">
               <string>Blue:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="8" column="0" colspan="2">
+            <widget class="QLabel" name="label_10">
+             <property name="text">
+              <string>Green:</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="2">
+            <widget class="QSpinBox" name="origeny_spinBox">
+             <property name="maximum">
+              <number>500</number>
+             </property>
+            </widget>
+           </item>
+           <item row="16" column="0" colspan="3">
+            <widget class="QPushButton" name="ordenard_pushButton">
+             <property name="text">
+              <string>OrdenarDis</string>
+             </property>
+            </widget>
+           </item>
+           <item row="14" column="0" colspan="3">
+            <widget class="QPushButton" name="ordenari_pushButton">
+             <property name="text">
+              <string>OrdenarID</string>
              </property>
             </widget>
            </item>
@@ -90,10 +150,17 @@
              </property>
             </widget>
            </item>
-           <item row="3" column="2">
-            <widget class="QSpinBox" name="destinox_spinBox">
-             <property name="maximum">
-              <number>500</number>
+           <item row="15" column="0" colspan="3">
+            <widget class="QPushButton" name="ordenarv_pushButton">
+             <property name="text">
+              <string>OrdenarVel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="17" column="0" colspan="3">
+            <widget class="QPushButton" name="mostrarg_pushButton">
+             <property name="text">
+              <string>MostrarGrafo</string>
              </property>
             </widget>
            </item>
@@ -111,13 +178,6 @@
              </property>
             </widget>
            </item>
-           <item row="7" column="2">
-            <widget class="QSpinBox" name="red_spinBox">
-             <property name="maximum">
-              <number>255</number>
-             </property>
-            </widget>
-           </item>
            <item row="4" column="0">
             <widget class="QLabel" name="label_5">
              <property name="text">
@@ -125,8 +185,8 @@
              </property>
             </widget>
            </item>
-           <item row="9" column="2">
-            <widget class="QSpinBox" name="blue_spinBox">
+           <item row="8" column="2">
+            <widget class="QSpinBox" name="green_spinBox">
              <property name="maximum">
               <number>255</number>
              </property>
@@ -139,64 +199,11 @@
              </property>
             </widget>
            </item>
-           <item row="12" column="0" colspan="3">
-            <widget class="QPushButton" name="agregarfinal_pushButton">
-             <property name="text">
-              <string>Agregar-Final</string>
-             </property>
-            </widget>
-           </item>
-           <item row="2" column="2">
-            <widget class="QSpinBox" name="origeny_spinBox">
-             <property name="maximum">
-              <number>500</number>
-             </property>
-            </widget>
-           </item>
-           <item row="1" column="0">
-            <widget class="QLabel" name="label_2">
-             <property name="text">
-              <string>Origen en X:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="8" column="2">
-            <widget class="QSpinBox" name="green_spinBox">
-             <property name="maximum">
-              <number>255</number>
-             </property>
-            </widget>
-           </item>
-           <item row="7" column="0" colspan="2">
-            <widget class="QLabel" name="label_9">
-             <property name="text">
-              <string>Red:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="11" column="0" colspan="3">
-            <widget class="QPushButton" name="agregarinicio_pushButton">
-             <property name="text">
-              <string>Agregar-Inicio</string>
-             </property>
-            </widget>
-           </item>
            <item row="5" column="1" colspan="2">
             <widget class="QLineEdit" name="velocidad_lineEdit"/>
            </item>
-           <item row="8" column="0" colspan="2">
-            <widget class="QLabel" name="label_10">
-             <property name="text">
-              <string>Green:</string>
-             </property>
-            </widget>
-           </item>
-           <item row="16" column="0" colspan="3">
-            <widget class="QPushButton" name="ordenard_pushButton">
-             <property name="text">
-              <string>OrdenarDis</string>
-             </property>
-            </widget>
+           <item row="0" column="1" colspan="2">
+            <widget class="QLineEdit" name="id_lineEdit"/>
            </item>
           </layout>
          </widget>
