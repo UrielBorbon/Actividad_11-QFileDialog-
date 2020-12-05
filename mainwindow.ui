@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>805</width>
-    <height>670</height>
+    <height>705</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -288,7 +288,15 @@
     <addaction name="actionAbrir"/>
     <addaction name="actionGuardar"/>
    </widget>
+   <widget class="QMenu" name="menuAlgoritmos">
+    <property name="title">
+     <string>Algoritmos</string>
+    </property>
+    <addaction name="actionAmplitud"/>
+    <addaction name="actionProfundidad"/>
+   </widget>
    <addaction name="menuArchivo"/>
+   <addaction name="menuAlgoritmos"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionAbrir">
@@ -305,6 +313,16 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+S</string>
+   </property>
+  </action>
+  <action name="actionAmplitud">
+   <property name="text">
+    <string>Amplitud</string>
+   </property>
+  </action>
+  <action name="actionProfundidad">
+   <property name="text">
+    <string>Profundidad</string>
    </property>
   </action>
  </widget>
