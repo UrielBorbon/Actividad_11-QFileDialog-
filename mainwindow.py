@@ -6,6 +6,7 @@ from listapar import ListaPar
 from particula import Particula
 import pprint
 
+
 def methodsort_by_id(Particula):
     return Particula.Id
 
@@ -43,7 +44,89 @@ class MainWindow(QMainWindow):
         self.ui.ordenarv_pushButton.clicked.connect(self.click_ordenarv)
         self.ui.ordenard_pushButton.clicked.connect(self.click_ordenard)
 
-        self.ui.mostrarg_pushButton.clicked.connect(self.click_mostrarg)
+        self.ui.mostrarg_pushButton.clicked.connect(self.click_mostrarg) 
+
+        self.ui.actionAmplitud.triggered.connect(self.action_amplitud)
+        self.ui.actionProfundidad.triggered.connect(self.action_profundidad)
+
+        
+
+    @Slot()
+    def action_amplitud(self):
+        self.ui.salida.clear()
+        cola = []
+        visitados = []
+
+        orX = self.ui.origenx_spinBox.value()
+        orY = self.ui.origeny_spinBox.value()
+        nodo = (orX,orY)
+        cola.append(nodo)
+        visitados.append(nodo)
+        grafo = dict()
+        for con in self.listapar.particles:
+            origenes = (con.origen_X, con.origen_Y)
+            destinos = (con.destino_X, con.destino_Y)
+
+            if origenes in grafo:
+                grafo[origenes].append(destinos)
+            else:
+                grafo[origenes] = [destinos]
+
+            if destinos in grafo:
+                grafo[destinos].append(origenes)
+            else:
+                grafo[destinos] = [origenes]
+
+
+        while cola:
+            nodo = tuple(cola[0])
+            del cola[0]
+            for i in grafo.get(nodo):
+                temp = tuple(i)
+                if temp not in visitados:
+                    visitados.append(temp)
+                    cola.append(temp)
+        self.ui.salida.insertPlainText("#####AMPLITUD##### \n")
+        self.ui.salida.insertPlainText(str(visitados))
+
+
+    @Slot()
+    def action_profundidad(self):
+        self.ui.salida.clear()
+        pila = []
+        visitados = []
+        orX = self.ui.origenx_spinBox.value()
+        orY = self.ui.origeny_spinBox.value()
+        nodo = (orX, orY)
+        pila.append(nodo)
+        visitados.append(nodo)
+        grafo = dict()
+        for con in self.listapar.particles:
+            origenes = (con.origen_X, con.origen_Y)
+            destinos = (con.destino_X, con.destino_Y)
+
+            if origenes in grafo:
+                grafo[origenes].append(destinos)
+            else:
+                grafo[origenes] = [destinos]
+
+            if destinos in grafo:
+                grafo[destinos].append(origenes)
+            else:
+                grafo[destinos] = [origenes]
+
+        while pila:
+            nodo = tuple(pila[-1])
+            del pila[-1]
+            for i in grafo.get(nodo):
+                temp = tuple(i)
+                if temp not in visitados:
+                    visitados.append(temp)
+                    pila.append(temp)
+        self.ui.salida.insertPlainText("#####PROFUNDIDAD##### \n")
+        self.ui.salida.insertPlainText(str(visitados))
+
+
 
     @Slot()
     def click_mostrarg(self):
@@ -66,7 +149,7 @@ class MainWindow(QMainWindow):
             else:
                 grafo[destinos] = [arista_origenes]
 
-            printdic = pprint.pformat(grafo, width = 35)
+            printdic = pprint.pformat(grafo, width = 45)
             printdic = printdic + '\n'
 
             self.ui.salida.insertPlainText(printdic)
